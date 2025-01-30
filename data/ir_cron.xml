@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_update_disaster_data" model="ir.cron">
+            <field name="name">Update Disaster Data</field>
+            <field name="model_id" ref="model_aerorelief_location"/>
+            <field name="state">code</field>
+            <field name="code">model.update_disaster_data()</field>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+    </data>
+</odoo>
+

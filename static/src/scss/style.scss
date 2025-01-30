@@ -1,0 +1,48 @@
+// AeroRelief® Custom Styles
+
+// Colors
+$sky-blue: #1E90FF;
+$safety-orange: #FF5733;
+$forest-green: #228B22;
+
+// Typography
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
+
+// Custom styles
+.o_main_navbar {
+    background-color: $sky-blue;
+}
+
+.btn-primary {
+    background-color: $safety-orange;
+    border-color: $safety-orange;
+    &:hover {
+        background-color: darken($safety-orange, 10%);
+        border-color: darken($safety-orange, 10%);
+    }
+}
+
+.o_form_label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+// Custom classes
+.aerorelief-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: $sky-blue;
+}
+
+.aerorelief-emergency {
+    color: $safety-orange;
+}
+
+.aerorelief-ground {
+    color: $forest-green;
+}
+

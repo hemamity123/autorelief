@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_disaster_form" model="ir.ui.view">
+        <field name="name">aerorelief.disaster.form</field>
+        <field name="model">aerorelief.disaster</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="aerorelief-header">
+                            <field name="name" placeholder="Disaster Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="type" widget="selection"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <group>
+                            <field name="location"/>
+                            <field name="coordinates"/>
+                            <field name="severity" widget="selection"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="Impact Assessments">
+                            <field name="assessment_ids"/>
+                        </page>
+                        <page string="Relief Routes">
+                            <field name="route_ids"/>
+                        </page>
+                        <page string="Response Teams">
+                            <field name="team_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_disaster_tree" model="ir.ui.view">
+        <field name="name">aerorelief.disaster.tree</field>
+        <field name="model">aerorelief.disaster</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="severity == 'critical'" decoration-warning="severity == 'high'" decoration-info="severity == 'medium'" decoration-success="severity == 'low'">
+                <field name="name"/>
+                <field name="type"/>
+                <field name="start_date"/>
+                <field name="location"/>
+                <field name="severity"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_disaster" model="ir.actions.act_window">
+        <field name="name">Disasters</field>
+        <field name="res_model">aerorelief.disaster</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
+

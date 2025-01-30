@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="dashboard_template" name="AeroRelief Dashboard">
+        <t t-call="website.layout">
+            <div class="container-fluid mt-3">
+                <h1>AeroRelief® Command Center</h1>
+                <ul class="nav nav-tabs mb-3">
+                    <li class="nav-item">
+                        <a class="nav-link active o_aerorelief_tab" data-tab="command_center" href="#">Command Center</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link o_aerorelief_tab" data-tab="impact_analyzer" href="#">Impact Analyzer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link o_aerorelief_tab" data-tab="relief_navigator" href="#">Relief Navigator</a>
+                    </li>
+                </ul>
+                <div class="o_aerorelief_tab_content o_aerorelief_command_center">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Disaster Map</h5>
+                                    <div class="o_aerorelief_map" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Disaster List</h5>
+                                    <div class="btn-group mb-3" role="group" aria-label="Disaster Type Filter">
+                                        <button type="button" class="btn btn-outline-primary o_aerorelief_filter active" data-filter="all">All</button>
+                                        <button type="button" class="btn btn-outline-primary o_aerorelief_filter" data-filter="earthquake">Earthquake</button>
+                                        <button type="button" class="btn btn-outline-primary o_aerorelief_filter" data-filter="flood">Flood</button>
+                                        <button type="button" class="btn btn-outline-primary o_aerorelief_filter" data-filter="hurricane">Hurricane</button>
+                                        <button type="button" class="btn btn-outline-primary o_aerorelief_filter" data-filter="wildfire">Wildfire</button>
+                                    </div>
+                                    <div class="o_aerorelief_disaster_list" style="max-height: 300px; overflow-y: auto;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Satellite Data</h5>
+                                    <div class="o_aerorelief_satellite_data" style="max-height: 300px; overflow-y: auto;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Emergency Alerts</h5>
+                                    <div class="o_aerorelief_emergency_alerts" style="max-height: 300px; overflow-y: auto;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="o_aerorelief_tab_content o_aerorelief_impact_analyzer d-none">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Disaster Count by Type</h5>
+                                    <canvas class="o_aerorelief_chart1"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Severity by Disaster Type</h5>
+                                    <canvas class="o_aerorelief_chart2"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="o_aerorelief_tab_content o_aerorelief_relief_navigator d-none">
+                    <!-- Add content for Relief Navigator tab -->
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="DisasterListItem">
+        <div class="o_aerorelief_disaster mb-2" t-att-data-disaster-id="disaster.id">
+            <strong><t t-esc="disaster.name"/></strong>
+            <br/>
+            Type: <t t-esc="disaster.type"/>
+            <br/>
+            Severity: <t t-esc="disaster.severity"/>%
+        </div>
+    </template>
+
+    <template id="SatelliteDataItem">
+        <div class="o_aerorelief_satellite_item mb-2">
+            <strong><t t-esc="data.name"/></strong>
+            <br/>
+            Capture Time: <t t-esc="data.capture_time"/>
+            <br/>
+            <a t-att-href="data.image_url" target="_blank">View Image</a>
+        </div>
+    </template>
+
+    <template id="EmergencyAlertItem">
+        <div class="o_aerorelief_alert_item mb-2" t-attf-class="alert alert-#{alert.alert_level}">
+            <strong><t t-esc="alert.name"/></strong>
+            <br/>
+            Level: <t t-esc="alert.alert_level"/>
+            <br/>
+            <t t-esc="alert.description"/>
+        </div>
+    </template>
+</odoo>
+

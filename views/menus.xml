@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_aerorelief_root" name="AeroRelief" sequence="10"/>
+
+    <menuitem id="menu_disaster" name="Disasters" parent="menu_aerorelief_root" action="action_disaster" sequence="10"/>
+    
+    <menuitem id="menu_assessment" name="Impact Assessments" parent="menu_aerorelief_root" action="action_assessment" sequence="20"/>
+    
+    <menuitem id="menu_route" name="Relief Routes" parent="menu_aerorelief_root" action="action_route" sequence="30"/>
+    
+    <menuitem id="menu_team" name="Response Teams" parent="menu_aerorelief_root" action="action_team" sequence="40"/>
+    
+    <menuitem id="menu_dashboard" name="Dashboard" parent="menu_aerorelief_root" action="action_dashboard" sequence="50"/>
+</odoo>
+
